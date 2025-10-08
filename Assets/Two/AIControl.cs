@@ -15,7 +15,7 @@ public class AIControl : MonoBehaviour {
     {
         agent = GetComponent<NavMeshAgent>();
         goalLocations = GameObject.FindGameObjectsWithTag("goal");
-        int i = Random.Range(0, goalLocations.Lenght);
+        int i = Random.Range(0, goalLocations.Length);
         agent.SetDestination(goalLocations[i].transform.position);
     }
 
