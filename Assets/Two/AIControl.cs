@@ -12,8 +12,8 @@ public class AIControl : MonoBehaviour {
     float detectionRadius = 20.0f;
     float fleeRadius = 10.0f;
 
-    void Start() {
-
+    void Start() 
+    {
         agent = GetComponent<NavMeshAgent>();
         goalLocations = GameObject.FindGameObjectsWithTag("goal");
         int i = Random.Range(0, goalLocations.Length);
@@ -23,8 +23,8 @@ public class AIControl : MonoBehaviour {
         ResetAgent();
     }
 
-    void ResetAgent() {
-
+    void ResetAgent() 
+    {
         speedMult = Random.Range(0.1f, 1.5f);
         anim.SetFloat("speedMult", speedMult);
         agent.speed *= speedMult;
@@ -33,18 +33,18 @@ public class AIControl : MonoBehaviour {
         agent.ResetPath();
     }
 
-    public void DetectNewObstacle(Vector3 position) {
-
-        if (Vector3.Distance(position, this.transform.position) < detectionRadius) {
-
+    public void DetectNewObstacle(Vector3 position) 
+    {
+        if (Vector3.Distance (position, this.transform.position) < detectionRadius) 
+        {
             Vector3 fleeDirection = (this.transform.position - position).normalized;
             Vector3 newGoal = this.transform.position + fleeDirection * fleeRadius;
 
             NavMeshPath path = new NavMeshPath();
             agent.CalculatePath(newGoal, path);
 
-            if (path.status != NavMeshPathStatus.PathInvalid) {
-
+            if (path.status != NavMeshPathStatus.PathInvalid) 
+            {
                 agent.SetDestination(path.corners[path.corners.Length - 1]);
                 anim.SetTrigger("isRunning");
                 agent.speed = 10.0f;
@@ -53,10 +53,10 @@ public class AIControl : MonoBehaviour {
         }
     }
 
-    void Update() {
-
-        if (agent.remainingDistance < 1.0f) {
-
+    void Update() 
+    {
+        if (agent.remainingDistance < 1.0f) 
+        {
             ResetAgent();
             int i = Random.Range(0, goalLocations.Length);
             agent.SetDestination(goalLocations[i].transform.position);

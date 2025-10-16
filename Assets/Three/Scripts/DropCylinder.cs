@@ -9,7 +9,7 @@ public class DropCylinder : MonoBehaviour {
 
     void Start() 
     {
-        agents = GameObject.FindGameObjectsWithTag("agent");
+        agents = GameObject.FindGameObjectsWithTag("Agent");
     }
 
 
