@@ -12,7 +12,7 @@ public class FlockManager : MonoBehaviour
     [Header("Fish Settings")]
     [Range(0.0f, 5.0f)]
     public float minSpeed;
-    [Range(0.0f, 5.0f)]
+    [Range(0.0f, 500.0f)]
     public float maxSpeed;
     [Range(1.0f, 10.0f)]
     public float neighbourDistance;
